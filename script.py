@@ -10,11 +10,11 @@ from wordpress_xmlrpc.compat import xmlrpc_client
 from wordpress_xmlrpc.methods import media, posts
 from wordpress_xmlrpc.methods.posts import NewPost, GetPost
 
-DATA_DIR = '/home/jayant/images'
-APP_ID = API_KEY = '107342592752625'
-APP_SECRET = '5a150575eab9dfe518e1e4eb9012f40b'
-ACCESS_TOKEN = 'CAABhoKUcOZCEBADA7hLDuX5jjvffZAPVX5ezLriCBZBDh1L9IZCX8pirmogsD2a2kcjGELwfuJlxpBxnr8nKLCWdZBPz7v9q0QNYf0YqbQhZBy11jGXBxFsKIUJZCZCxjIZAQ8I7yEyDBEuytMOIrJKACnXyhnBj1571wPOmzZCRuOKO6WOFB7ZBRVR'
-PAGE_ID = '349730015108914'
+DATA_DIR = ''
+APP_ID = API_KEY = ''
+APP_SECRET = ''
+ACCESS_TOKEN = ''
+PAGE_ID = ''
 
 
 def makeSoup(url):
@@ -90,7 +90,7 @@ def expandUrl(url, depth=3):
 
 def post_data_to_site(titles, filenames):
 	post_ids = []
-	client = Client('http://lolyf.com/xmlrpc.php','admin','JAY__ant746')
+	client = Client('http://domain.com/xmlrpc.php','username','password')
 	for i in range(0,len(titles)):
 		post_title, filename = titles[i], filenames[i]
 		imgfile = os.path.join(DATA_DIR, filename)
@@ -116,7 +116,7 @@ def extend_access_token(ACCESS_TOKEN):
 
 def share_on_facebook(post_ids, access_token, page_id=PAGE_ID):
 	graph = facebook.GraphAPI(access_token)
-	client = Client('http://lolyf.com/xmlrpc.php','admin','JAY__ant746')
+	client = Client('http://domain.com/xmlrpc.php','username','password')
 	for post_id in post_ids:
 		post = client.call(GetPost(post_id))
 		link = post.link
